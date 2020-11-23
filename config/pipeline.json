@@ -1,0 +1,22 @@
+{
+  "extract": {
+    "url_path": "https://www.propertypriceregister.ie/website/npsra/ppr/npsra-ppr.nsf/Downloads/PPR-ALL.zip/$FILE/PPR-ALL.zip",
+    "unzip": true,
+    "destination_path": "extract/ppr.csv"
+  },
+  "transform": {
+    "source_path": "s3_bucket/extract/ppr.csv",
+    "destination_path": "s3_bucket/transform/transform_ppr.csv"
+  },
+  "load": {
+    "backup": true,
+    "transformed_source": "s3_bucket/transform/transform_ppr.csv",
+    "current_source_path": "s3_bucket/load/ppr_current.csv",
+    "destination_path": "s3_bucket/load/new_ppr_current.csv",
+    "primary_keys": [
+      "address",
+      "county",
+      "sales_value"
+    ]
+  }
+}
