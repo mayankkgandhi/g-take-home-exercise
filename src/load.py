@@ -1,25 +1,4 @@
 import pandas as pd
-from abc import abstractmethod
-
-
-class Loader:
-
-    def _before_load(self): pass
-
-    @abstractmethod
-    def _load(self):
-        raise NotImplementedError
-
-    def _after_load(self): pass
-
-    def load(self):
-        try:
-            self._before_load()
-            self._load()
-            self._after_load()
-        except Exception as e:
-            print("Exception loading data")
-            raise e
 
 
 class Csv_Load:
